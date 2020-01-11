@@ -3,31 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Starchat</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
-
+    <script src="jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <from id="chat">
+    <form id="chat">
         <input type="text" name="username" placeholder="Digite seu usuário">
         <div class="messages"></div>
         <input type="text" name="message" placeholder="Digite sua mensagem">
         <button type="submit">Enviar</button>
-    </from>
+    </form>
 
     <script type="text/javascript">
         var socket = io('http://localhost:3000')
 
         function renderMessage(message) {
-            $('.messages').append('<div class="message"<strong>' + message.author + '</strong>:' + message.message +
+            $('.messages').append('<div class="message"><strong>' + message.author + '</strong>: ' + message.message +
                 '</div>')
         }
+
+        socket.on('previousMessages', function (messages) {
+            for(message of messages){
+                renderMessage(message)
+            }
+        })
+
+        socket.on('receivedMessage', function (message) {
+            renderMessage(message)
+        })
 
         $('#chat').submit(function (event) {
             event.preventDefault()
@@ -45,6 +53,7 @@
 
                 socket.emit('sendMessage', messageObject)
             }
+
         })
     </script>
 </body>
