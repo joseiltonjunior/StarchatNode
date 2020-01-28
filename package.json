@@ -1,5 +1,5 @@
 {
-  "name": "ChatNode",
+  "name": "chat_node",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
