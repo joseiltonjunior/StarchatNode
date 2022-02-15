@@ -1,6 +1,11 @@
 html,
 body {
     height: 100%;
+    background-image: url("bkgd.jpg");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    font-family: sans-serif;
 }
 
 * {
@@ -18,16 +23,18 @@ body {
 }
 
 input {
-    width: 600px;
-    border: 2px solid #222;
+    width: 100%;
+    max-width: 600px;
+    border: none;
     height: 50px;
     padding: 0 20px;
-    font-size: 14px;
-    border-radius: 10px;
+    font-size: 17px;
+    border-radius: 10px;    
 }
 
 button {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 50px;
     font-size: 14px;
     background: #222;
@@ -37,14 +44,18 @@ button {
     color: #FFF;
     margin-top: 10px;
     border-radius: 10px;
-
+    border: none;
+    text-transform: uppercase;
 }
 
 .messages {
     width: 600px;
     height: 400px;
     margin: 20px 0;
-    border: 2px solid #222;
+    border: none;
     padding: 20px;
     border-radius: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
 }
